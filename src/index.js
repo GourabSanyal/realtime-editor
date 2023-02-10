@@ -4,12 +4,24 @@ import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { router } from "./pages/router/router";
-
 import { RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          success: {
+            theme: {
+              primary: "#4aed88",
+            },
+          },
+        }}
+      ></Toaster>
+    </div>
     <RouterProvider router={router} />
   </React.StrictMode>
 );

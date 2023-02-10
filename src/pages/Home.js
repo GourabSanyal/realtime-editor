@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { v4 as uuidV4 } from "uuid";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
     const id = uuidV4();
     setRoomId(id);
     // console.log(id);
+    toast.success("New Room Created!");
   };
 
   return (
@@ -36,7 +38,7 @@ const Home = () => {
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
           />
-          <button className="btn joinBtn">Join</button>
+          <button onClick={} className="btn joinBtn">Join</button>
           <span className="createInfo">
             If you don't have an invite create &nbsp;{" "}
             <a onClick={createNewRoom} href="#" className="createNewBtn">
