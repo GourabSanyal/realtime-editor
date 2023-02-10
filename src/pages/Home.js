@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidV4 } from "uuid";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
