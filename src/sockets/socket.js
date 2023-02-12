@@ -7,5 +7,5 @@ export const initSocket = async () => {
     transports: ["websocket"],
   };
 
-  io.connect("https://localhost:5000", { options });
+  io.connect("http://localhost:5000", options);
 };
