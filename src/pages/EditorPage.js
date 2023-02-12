@@ -20,8 +20,12 @@ const EditorPage = () => {
   useEffect(() => {
     const init = async () => {
       socketRef.current = await initSocket();
-      socketRef.current.on("connect_error", (err) => handleErrors(err));
-      socketRef.current.on("connect_failed", (err) => handleErrors(err));
+      socketRef.current.on("connect_error", (err) => {
+        handleErrors(err);
+      });
+      socketRef.current.on("connect_failed", (err) => {
+        handleErrors(err);
+      });
 
       function handleErrors(e) {
         console.log("socket error", e);
