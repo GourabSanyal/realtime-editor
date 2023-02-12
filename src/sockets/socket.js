@@ -2,15 +2,10 @@ import { io } from "socket.io-client";
 
 export const initSocket = async () => {
   const options = {
-    // retries: 3,
-    // ackTimeout: 10000,
-    // transports: ["websocket"],
-    // reconnectionAttemot: "Infinity",
-    withCredentials: true,
-    extraHeaders: {
-      "my-custom-header": "abcd",
-    },
+    retries: 3,
+    ackTimeout: 10000,
+    transports: ["websocket"],
   };
 
-  return io(process.env.REACT_APP_BACKEND_URL, { options });
+  io.connect("https://localhost:5000", { options });
 };

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-// import ACTIONS from "../actions/Actions";
+import ACTIONS from "../actions/Actions";
 import Client from "../components/Client";
 import Editor from "../components/Editor";
 import { initSocket } from "../sockets/socket";
@@ -8,20 +8,14 @@ import {
   useLocation,
   useNavigate,
   Navigate,
-  // useParams,
+  useParams,
 } from "react-router-dom";
 
 const EditorPage = () => {
   const socketRef = useRef(null);
   const location = useLocation();
-  // const { roomId } = useParams();
+  const { roomId } = useParams();
   const reactNavigator = useNavigate();
-
-  // const handleErrors = (e) => {
-  //   console.log("socket error", e);
-  //   toast.error("Socket connectiion failed. Try again later!");
-  //   reactNavigator("/");
-  // };
 
   useEffect(() => {
     const init = async () => {
@@ -35,13 +29,13 @@ const EditorPage = () => {
         reactNavigator("/");
       }
 
-      // socketRef.current.emit(ACTIONS.JOIN, {
-      //   roomId,
-      //   username: location.state?.username,
-      // });
+      socketRef.current.emit(ACTIONS.JOIN, {
+        roomId,
+        username: location.state?.username,
+      });
     };
     init();
-  }, [reactNavigator]);
+  }, [reactNavigator, roomId]);
 
   const [clients, setClients] = useState([
     { socketId: 1, username: "vibe" },
@@ -51,7 +45,7 @@ const EditorPage = () => {
   ]);
 
   if (!location.state) {
-    return <Navigate />;
+    return <Navigate to="/" />;
   }
 
   return (
